@@ -9,8 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        goldTheme: {
+          darkBrown: "#3e2723",
+          gold1: "#795548",
+          gold2: "#ffb300",
+          lightGold: "#ffe082",
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"], // Universal Roboto font
       },
     },
   },
