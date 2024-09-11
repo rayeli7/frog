@@ -1,7 +1,7 @@
 # Build Stage
 FROM node:18-alpine
 
-WORKDIR /app
+WORKDIR /Frog
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./

@@ -1,12 +1,12 @@
 // pages/login.tsx
-import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+import { useRouter } from "next/router";
 
 const Login = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
@@ -14,9 +14,9 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('/wallet'); // Redirect to wallet page on successful login
+      router.push("/wallet"); // Redirect to wallet page on successful login
     } catch (error) {
-      setError('Invalid email or password');
+      setError("Invalid email or password");
     }
   };
 

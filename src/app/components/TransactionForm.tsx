@@ -1,28 +1,28 @@
 // components/TransactionForm.tsx
-import { useState } from 'react';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 
 const TransactionForm = () => {
   const [amount, setAmount] = useState<number>(0);
-  const [type, setType] = useState<'credit' | 'debit'>('credit');
-  const [timestamp, setTimestamp] = useState<string>('');
+  const [type, setType] = useState<"credit" | "debit">("credit");
+  const [timestamp, setTimestamp] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const userId = 'user-id'; // Replace with current user's ID
+    const userId = "user-id"; // Replace with current user's ID
 
     try {
-      await addDoc(collection(db, 'transactions'), {
+      await addDoc(collection(db, "transactions"), {
         amount,
         type,
         timestamp,
         userId,
       });
-      alert('Transaction added successfully!');
+      alert("Transaction added successfully!");
     } catch (error) {
-      console.error('Error adding transaction:', error);
+      console.error("Error adding transaction:", error);
     }
   };
 
@@ -41,7 +41,7 @@ const TransactionForm = () => {
         Type:
         <select
           value={type}
-          onChange={(e) => setType(e.target.value as 'credit' | 'debit')}
+          onChange={(e) => setType(e.target.value as "credit" | "debit")}
           className="border p-2 rounded w-full"
         >
           <option value="credit">Credit</option>

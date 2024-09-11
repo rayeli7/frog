@@ -1,11 +1,11 @@
 // pages/signup.tsx
-import { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
 
 const Signup = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -13,7 +13,7 @@ const Signup = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Signup successful!');
+      alert("Signup successful!");
     } catch (error) {
       setError((error as Error).message);
     }
