@@ -3,12 +3,12 @@ import { RfqContext } from "./RfqContext";
 import { RfqFormIds, getRfqForms } from "./RfqForms";
 import { BackButton } from "../common/BackButton";
 import { Panel } from "../common/Panel";
-import { createExchange } from "../workshop/messageUtils";
+import { createExchange } from "./lib/tbdex/messageUtils";
 import "../styles/date.css";
 import { useRecoilState } from "recoil";
 import { credentialsState, didState } from "../state";
 import { ExchangesContext } from "./ExchangesContext";
-import { pfiAllowlist } from "../workshop/allowlist";
+import { pfiAllowlist } from "../lib/tbdex/allowedlist";
 import { PresentationExchange } from "@web5/credentials";
 
 type RfqModalProps = {
