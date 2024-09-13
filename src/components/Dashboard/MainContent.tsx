@@ -3,10 +3,6 @@
  */
 import React from "react";
 import MyCards from "./MyCards";
-import WeeklyActivity from "./WeeklyActivity";
-import BalanceHistory from "./BalanceHistory";
-import RecentTransaction from "./RecentTransaction";
-import ExpenseStatistics from "./ExpenseStatistics";
 
 const MainContent: React.FC = () => {
   return (
@@ -17,16 +13,11 @@ const MainContent: React.FC = () => {
             <div className="self-stretch max-md:max-w-full">
               <div className="flex gap-5 max-md:flex-col">
                 <MyCards />
-                <WeeklyActivity />
               </div>
             </div>
-            <BalanceHistory />
           </div>
         </div>
-        <div className="flex flex-col ml-5 w-[32%] max-md:ml-0 max-md:w-full">
-          <RecentTransaction />
-          <ExpenseStatistics />
-        </div>
+        <div className="flex flex-col ml-5 w-[32%] max-md:ml-0 max-md:w-full"></div>
       </div>
     </main>
   );

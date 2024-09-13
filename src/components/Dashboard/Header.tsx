@@ -4,53 +4,38 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { MdOutlineNotifications, MdOutlineSettings } from "react-icons/md";
 
 const Header: React.FC = () => {
   return (
-    <header className="flex flex-wrap gap-5 justify-between px-10 py-5 w-full bg-white max-md:px-5 max-md:max-w-full">
-      <div className="flex gap-10 my-auto whitespace-nowrap text-slate-700">
-        <div className="flex gap-2.5 text-2xl font-black">
+    <header className="flex flex-wrap gap-5 justify-between items-center px-10 py-5 w-full bg-white max-md:px-5 max-md:max-w-full">
+      <div className="flex gap-10 my-auto items-center whitespace-nowrap text-yellow-950">
+        <div className="flex gap-0.5 text-2xl ">
           <Image
-            src="/android-icon-36x36.png"
+            src="/android-icon-72x72.png"
             alt="logo"
-            width={36}
-            height={36}
+            width={72}
+            height={72}
             layout="responsive"
           />
-          <div className="basis-auto">Frog.</div>
         </div>
-        <h1 className="text-3xl font-semibold basis-auto">Overview</h1>
+        <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight ">
+          Overview
+        </h1>
       </div>
       <nav className="flex gap-8 items-center">
-        <Link href="/">
-          <Image
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/707de28c87ebc01c67ccb6153937d880023e06962382f04d8b54a417baace568?apiKey=65c59f804f0842d29a4e67cb1a2841cf&"
-            alt=""
-            width={50}
-            height={50}
-            className="object-contain shrink-0 self-stretch my-auto aspect-square w-[50px]"
-          />
+        <Link href="/dashboard/settings">
+          <MdOutlineSettings size={24} color="#422006" />
         </Link>
         <Link href="/">
-          <Image
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/d07a3b2f1de1b6c8b419c643c5a9c885dc86c9a7e9051bea6b8e83f3b5b4953a?apiKey=65c59f804f0842d29a4e67cb1a2841cf&"
-            alt=""
-            width={50}
-            height={50}
-            className="object-contain shrink-0 self-stretch my-auto aspect-square w-[50px]"
-          />
+          <MdOutlineNotifications size={24} color="#422006" />
         </Link>
         <Link href="/">
-          <Image
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ccb966e89531d8852beaa85caa96ee5353971134c3a591a62efc980496d29bd0?apiKey=65c59f804f0842d29a4e67cb1a2841cf&"
-            alt=""
-            width={50}
-            height={50}
-            className="object-contain shrink-0 self-stretch aspect-square w-[60px]"
-          />
+          <Avatar>
+            <AvatarImage src="" />
+            <AvatarFallback>NA</AvatarFallback>
+          </Avatar>
         </Link>
       </nav>
     </header>

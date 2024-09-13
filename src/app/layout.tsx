@@ -102,7 +102,9 @@ export default function RootLayout({
       </head>
       <body>
         <div className="flex overflow-hidden flex-col bg-white">
-          <AuthWrapper>{children}</AuthWrapper>
+          <AuthWrapper>
+            <main>{children}</main>
+          </AuthWrapper>
         </div>
       </body>
     </html>

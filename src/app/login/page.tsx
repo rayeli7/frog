@@ -16,7 +16,7 @@ export default function LoginPage() {
         <Image
           src="/Authentication/authentication-light.png"
           alt="Authentication"
-          className="absolute inset-0 object-cover"
+          className="absolute inset-0 object-cover hidden dark:block"
           layout="fill"
         />
         {/* Dark mode image for mobile, hidden by default */}

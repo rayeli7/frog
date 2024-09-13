@@ -29,7 +29,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         setIsLoading(false);
       }, 3000);
       alert("Signup successful!");
-      router.push("/wallet");
+      router.push("/");
     } catch (error) {
       // setError((error as Error).message);
     }
