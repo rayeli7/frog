@@ -15,8 +15,6 @@ import {
   MdOutlineSettings,
   MdAccountBalanceWallet,
   MdOutlineAccountBalanceWallet,
-  MdAccountCircle,
-  MdOutlineAccountCircle,
 } from "react-icons/md";
 import { FaBars } from "react-icons/fa";
 import {
@@ -52,13 +50,6 @@ const menuItems: MenuItem[] = [
     link: "/dashboard/transactions",
   },
   {
-    iconA: MdAccountCircle,
-    iconB: MdOutlineAccountCircle,
-    label: "Accounts",
-    isActive: false,
-    link: "/dashboard/accounts",
-  },
-  {
     iconA: MdSettings,
     iconB: MdOutlineSettings,
     label: "Settings",
@@ -79,7 +70,7 @@ const Sidebar: React.FC = () => {
 
   // Render the menu items
   return (
-    <nav className="absolute flex w-64 h-full bg-transparent text-white ">
+    <nav className="absolute flex-col justify-between w-64 h-full bg-transparent text-white ">
       {/* Dropdown Icon for Mobile */}
       <div className="block md:hidden z-10">
         <DropdownMenu>
@@ -130,6 +121,7 @@ const Sidebar: React.FC = () => {
           </Link>
         ))}
       </div>
+      {/* Footer section */}
     </nav>
   );
 };
