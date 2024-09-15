@@ -7,18 +7,18 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Dashboardcomponent from "@/components/Dashboard/DashboardComp";
 
 export default function Dashboard() {
-  const { fetchDataForUser } = useDidContext();
+  const { selectedPfioffering, fetchDataForUser } = useDidContext();
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user && !selectedPfioffering) {
         fetchDataForUser(user);
       }
     });
 
     return () => unsubscribe();
-  }, [fetchDataForUser]);
+  }, [selectedPfioffering]);
 
   return (
     <>

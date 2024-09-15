@@ -7,7 +7,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 import { addTransaction } from "@/lib/firebaseFunctions";
 
-
 import React from "react";
 import Pagination from "./Pagination";
 import TransactionRow from "./TransactionRow";
@@ -122,20 +121,11 @@ const Dashboardcomponent: React.FC = () => {
                     Balance
                   </div>
                 </div>
-                <button
-                  onClick={() =>
-                    handleAddTransaction(
-                      Number(
-                        (document.getElementById("amount") as HTMLInputElement)
-                          .value,
-                      ),
-                      "debit",
-                    )
-                  }
-                  className="bg-red-500 text-white p-2 rounded hover:bg-red-600"
-                >
-                  Add Debit
-                </button>
+                <DrawerDialogTopUp
+                  title="Top Up Wallet"
+                  color="Red"
+                  description="Add funds to your wallet"
+                />
               </div>
             </div>
           </div>

@@ -1,13 +1,13 @@
 import { Offering } from "@tbdex/http-client";
-import { VcDataModel } from "@web5/credentials";
+import { BearerDid } from "@web5/dids";
 
 // types/DidContextType.ts
 export type DidContextType = {
-  did: string | null;
-  vc: Partial<VcDataModel> | null;
-  pfiofferings: Offering[] | null;
+  userBearerDid: BearerDid | null;
+  userVc: string | null;
+  selectedPfioffering: Offering | null;
   loading: boolean;
   error: string | null;
-  setDid: (did: string | null) => void;
   fetchDataForUser: (user: firebase.User) => Promise<void>;
+  handleSubmitRfq: (payinAmount: string, paymentDetails: object) => void;
 };

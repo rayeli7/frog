@@ -20,25 +20,23 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const handleLoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     try {
+      setIsLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-      alert("Login successful!");
-      router.push("/dashboard"); // Redirect to wallet page on successful login
+      router.push("/dashboard");
     } catch (error) {
-      // setError("Invalid email or password");
-      alert((error as Error).toString());
+      alert(`Error logging in: ${(error as Error).message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLoginSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
