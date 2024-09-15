@@ -61,3 +61,21 @@ Wallet Dashboard: View balances, add wallets, and track transactions.
 Manage Assets: Easily add, remove, or view crypto assets in your wallet.
 Peer-to-Peer Exchange: Use TBDex Protocol to initiate asset transfers.
 Notifications: Receive real-time updates on transaction status.
+
+├── components/
+│ ├── Dashboard/
+│ ├── AuthWrapper.tsx
+│ └── Sidebar.tsx
+├── pages/
+│ ├── login.tsx
+│ ├── signup.tsx
+│ └── dashboard/
+│ ├── transactions.tsx
+│ └── index.tsx
+├── public/
+│ └── images/
+├── styles/
+│ └── globals.css
+├── firebase/
+│ └── config.js
+└── README.md
