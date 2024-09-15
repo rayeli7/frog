@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 import { addTransaction } from "@/lib/firebaseFunctions";
 
+
 import React from "react";
 import Pagination from "./Pagination";
 import TransactionRow from "./TransactionRow";
@@ -46,7 +47,7 @@ const Dashboardcomponent: React.FC = () => {
   }, []);
 
   const handleAddTransaction = (amount: number, type: "credit" | "debit") => {
-    addTransaction(amount, type);
+    addTransaction(amount, type, "credit");
     setTransactions([
       ...transactions,
       {
@@ -98,7 +99,11 @@ const Dashboardcomponent: React.FC = () => {
                 </div>
                 {/* Add a button to top up the wallet */}
                 <div className="ml-auto">
-                  <DrawerDialogTopUp title="Top Up Wallet" color="green-500" />
+                  <DrawerDialogTopUp
+                    title="Top Up Wallet"
+                    color="lime-500"
+                    description="Add funds to your wallet"
+                  />
                 </div>
               </div>
             </div>

@@ -29,7 +29,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         setIsLoading(false);
       }, 3000);
       alert("Login successful!");
-      router.push("/"); // Redirect to wallet page on successful login
+      router.push("/dashboard"); // Redirect to wallet page on successful login
     } catch (error) {
       // setError("Invalid email or password");
       alert((error as Error).toString());
