@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frog Wallet - TBDex Hackathon Submission
 
-## Getting Started
+## 🐸 Frog Wallet
 
-First, run the development server:
+Frog Wallet is a decentralized wallet application built for managing digital assets with an intuitive and secure user experience. It is designed to allow users to easily track balances, view transaction history, and manage multiple crypto assets within a seamless interface. The application integrates with TBDex protocol to ensure secure and decentralized exchanges, promoting privacy and ownership over personal data and funds.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏆 Submission for TBDex Hackathon
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project is part of the TBDex Hackathon, which encourages the development of decentralized financial systems and applications with focus on self-sovereign identity and verifiable credentials.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Decentralized Wallet Management**: Create, view, and manage multiple wallet addresses in a secure environment.
+- **Transaction Tracking**: View detailed transaction histories and balances for multiple assets.
+- **Firebase Authentication**: Secure login and user verification system to keep user data safe.
+- **Responsive UI**: Designed with Next.js and TailwindCSS for a responsive and adaptive interface, suitable for both desktop and mobile.
+- **Seamless Integration with TBDex Protocol**: Enables peer-to-peer asset exchange with decentralized identity features.
+- **Real-Time Notifications**: Firebase integration for push notifications about transaction status updates.
+- **UI Theming**: Custom dark and light modes using TailwindCSS and theme options for accessibility.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+- **Frontend**:
+  - [Next.js](https://nextjs.org/): A React framework for fast page loading, dynamic routing, and seamless SSR.
+  - [TailwindCSS](https://tailwindcss.com/): A utility-first CSS framework for designing modern UIs.
+  - [React Icons](https://react-icons.github.io/react-icons/): For adding icons to improve visual navigation.
+- **Backend**:
+  - [Firebase](https://firebase.google.com/): Real-time database and authentication for secure user data handling.
+  - [TBDex Protocol](https://www.tbdex.io/): Enables decentralized, verifiable identity and secure exchanges.
+- **Authentication**:
+  - Firebase Auth: For secure user authentication and session handling.
+- **Deployment**:
+  - Vercel: Fast and easy deployment for serverless functions and frontend.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Installation
+
+### Prerequisites:
+
+1. Ensure you have [Node.js](https://nodejs.org/en/) installed on your machine.
+2. Install [Yarn](https://yarnpkg.com/) or use npm for package management.
+
+### Steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rayeli7/frog
+   cd frog-wallet
+   ```
