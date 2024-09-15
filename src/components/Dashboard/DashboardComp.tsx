@@ -122,7 +122,7 @@ const Dashboardcomponent: React.FC = () => {
                   </div>
                 </div>
                 <DrawerDialogTopUp
-                  title="Top Up Wallet"
+                  title="Expenditure"
                   color="Red"
                   description="Add funds to your wallet"
                 />
