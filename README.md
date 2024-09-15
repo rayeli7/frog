@@ -54,3 +54,10 @@ This project is part of the TBDex Hackathon, which encourages the development of
    git clone https://github.com/rayeli7/frog
    cd frog-wallet
    ```
+
+📖 Usage
+Sign Up: Create an account using Firebase Authentication.
+Wallet Dashboard: View balances, add wallets, and track transactions.
+Manage Assets: Easily add, remove, or view crypto assets in your wallet.
+Peer-to-Peer Exchange: Use TBDex Protocol to initiate asset transfers.
+Notifications: Receive real-time updates on transaction status.
