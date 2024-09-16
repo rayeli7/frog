@@ -20,21 +20,19 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsLoading(true);
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-      alert("Signup successful!");
-      router.push("/");
+      router.push("/dashboard");
     } catch (error) {
-      // setError((error as Error).message);
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
-
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSignup}>

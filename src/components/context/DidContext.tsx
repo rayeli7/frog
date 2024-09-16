@@ -15,6 +15,7 @@ import { PresentationExchange } from "@web5/credentials";
 import { Offering } from "@tbdex/http-client";
 import { createExchange } from "@/lib/tbdex/messageUtils";
 import { useCallback } from "react";
+import { Icons } from "../ui/icons";
 
 // Context Creation
 const DidContext = createContext<DidContextType | undefined>(undefined);
@@ -173,7 +174,12 @@ export const DidProvider: React.FC<{ children: React.ReactNode }> = ({
     [userBearerDid, userVc, selectedPfioffering, selectedCredentials],
   );
   // Render loading or error state
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Icons.spinner className="mr-2 h-12 w-12 animate-spin" />
+      </div>
+    );
   if (error) return <div>Error: {error}</div>;
 
   return (
