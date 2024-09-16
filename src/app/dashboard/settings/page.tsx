@@ -9,7 +9,7 @@ const Transactions = () => {
       <h1>Settings Page</h1>
       {/* Your page content */}
       <div>
-        <Tabs defaultValue="account" className="w-[400px]">
+        <Tabs defaultValue="account" className="mt-4 w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="security">Security</TabsTrigger>
