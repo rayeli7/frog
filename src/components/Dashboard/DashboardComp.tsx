@@ -26,7 +26,6 @@ interface Transaction {
 const Dashboardcomponent: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [balance, setBalance] = useState<number>(0);
-  const { selectedPfioffering } = useDidContext();
 
   useEffect(() => {
     const fetchTransactions = async () => {
