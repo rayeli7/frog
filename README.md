@@ -50,10 +50,44 @@ This project is part of the TBDex Hackathon, which encourages the development of
 ### Steps:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/rayeli7/frog
    cd frog-wallet
    ```
+
+   Install dependencies:
+
+2. bash
+   yarn install
+   or
+
+3. bash
+   Copiar código
+   npm install
+   Set up Firebase:
+
+4. Create a Firebase project and enable Firebase Authentication.
+   Set up a Firestore database for real-time data tracking.
+   Add Firebase credentials in .env.local:
+   env
+
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+Run the development server:
+
+5.  bash
+    yarn dev
+    or
+
+bash
+npm run dev
+
+6.  Open http://localhost:3000 in your browser to view the app.
 
 📖 Usage
 Sign Up: Create an account using Firebase Authentication.
@@ -62,20 +96,13 @@ Manage Assets: Easily add, remove, or view crypto assets in your wallet.
 Peer-to-Peer Exchange: Use TBDex Protocol to initiate asset transfers.
 Notifications: Receive real-time updates on transaction status.
 
-├── components/
-│ ├── Dashboard/
-│ ├── AuthWrapper.tsx
-│ └── Sidebar.tsx
-├── pages/
-│ ├── login.tsx
-│ ├── signup.tsx
-│ └── dashboard/
-│ ├── transactions.tsx
-│ └── index.tsx
-├── public/
-│ └── images/
-├── styles/
-│ └── globals.css
-├── firebase/
-│ └── config.js
-└── README.md
+💡 Future Enhancements
+Multi-Chain Support: Support for additional blockchains and assets.
+Enhanced Security: Add 2FA (Two-factor authentication) for extra security.
+Advanced Analytics: Provide insights and trends on asset movements.
+Offline Mode: Enable users to view wallet balances and transaction history offline.
+
+👥 Team
+Name: Raymond Eli
+Role: Beginner Developer
+Email: raymond7eli@gmail.com

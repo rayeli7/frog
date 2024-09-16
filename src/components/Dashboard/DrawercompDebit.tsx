@@ -24,11 +24,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FieldValues, useForm } from "react-hook-form";
+import { useDidContext } from "../context/DidContext";
 
 function ProfileForm({ className }: React.ComponentProps<"form">) {
   const { register, handleSubmit } = useForm();
+  const { selectedPfioffering, handleSubmitRfq, exchangesUpdated } =
+    useDidContext();
   const handlePaymentClick = async (data: FieldValues) => {
     // TODO: Implement payment logic here
+    if (selectedPfioffering !== null) {
+      await handleSubmitRfq(data.amount, data.details);
+      if (exchangesUpdated) {
+        alert("Qoute Submitted");
+      } else {
+        alert("Qoute Not Submitted");
+      }
+    } else {
+      alert("pfi offering not selected, retry in 5 seconds");
+      //TODO retry fetchuserdata and handle submit
+    }
 
     // Example: fetch payment details, send to payment gateway, etc.
     // Uncomment the following line to simulate payment click
