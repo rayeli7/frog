@@ -106,3 +106,11 @@ Offline Mode: Enable users to view wallet balances and transaction history offli
 Name: Raymond Eli
 Role: Beginner Developer
 Email: raymond7eli@gmail.com
+
+## Acknowledgments
+
+- Some code was adapted from [TBD project](https://github.com/TBD54566975/) under [MIT License](https://opensource.org/licenses/MIT).
+
+## Design Attribution
+
+- The design template used in this project is from [Figma BankDash UI kit], created by [Designer Name]. and Shadcn/ui (https://github.com/shadcn-ui/ui)

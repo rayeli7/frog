@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// Original code from TBDex workhop/TBD github
+// Author: Adewale Abati
+// URL: [Link to the source]
+
 import { BearerDid } from "@web5/dids";
 import { Close, Message, Offering, TbdexHttpClient } from "@tbdex/http-client";
 import { Jwt, VcDataModel } from "@web5/credentials";

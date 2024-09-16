@@ -8,13 +8,12 @@ import { db } from "@/firebaseConfig";
 import { addTransaction } from "@/lib/firebaseFunctions";
 
 import React from "react";
-import Pagination from "./Pagination";
 import TransactionRow from "./TransactionRow";
 import { DrawerDialogTopUp } from "./Drawercomp";
 import { GiReceiveMoney, GiPayMoney } from "react-icons/gi";
 import { GrCurrency } from "react-icons/gr";
 import { DrawerDialogDebit } from "./DrawercompDebit";
-import { useDidContext } from "../context/DidContext";
+
 interface Transaction {
   description: string;
   transactionId: string;
@@ -72,7 +71,7 @@ const Dashboardcomponent: React.FC = () => {
               <div className="flex flex-col">
                 <div className="text-base text-slate-400">Wallet Balance</div>
                 <div className="mt-2 text-2xl font-semibold text-neutral-800">
-                  {balance}
+                  USDC: {balance}
                 </div>
               </div>
             </div>
@@ -86,7 +85,7 @@ const Dashboardcomponent: React.FC = () => {
                 <div className="text-base text-slate-400">Total Income</div>
                 <div className="mt-2 text-2xl font-semibold text-neutral-800">
                   {/* Display the balance here */}
-                  Balance
+                  0.00
                 </div>
               </div>
               <div className="ml-auto">
@@ -102,7 +101,7 @@ const Dashboardcomponent: React.FC = () => {
               <div className="flex flex-col">
                 <div className="text-base text-slate-400">Total Expenses</div>
                 <div className="mt-2 text-2xl font-semibold text-neutral-800">
-                  Balance
+                  0.00
                 </div>
               </div>
               <div className="ml-auto">
