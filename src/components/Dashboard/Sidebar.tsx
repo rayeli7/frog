@@ -13,8 +13,6 @@ import {
   MdOutlineHouse,
   MdSettings,
   MdOutlineSettings,
-  MdAccountBalanceWallet,
-  MdOutlineAccountBalanceWallet,
 } from "react-icons/md";
 import { FaBars } from "react-icons/fa";
 import {
@@ -41,13 +39,6 @@ const menuItems: MenuItem[] = [
     label: "Dashboard",
     isActive: true,
     link: "/dashboard",
-  },
-  {
-    iconA: MdAccountBalanceWallet,
-    iconB: MdOutlineAccountBalanceWallet,
-    label: "Transactions",
-    isActive: false,
-    link: "/dashboard/transactions",
   },
   {
     iconA: MdSettings,
