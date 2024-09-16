@@ -28,19 +28,19 @@ export const DidProvider: React.FC<{ children: React.ReactNode }> = ({
   const [pfiofferings, setPfiofferings] = useState<Offering[] | null>(null);
   const [selectedPfioffering, setselectedPfioffering] =
     useState<Offering | null>(null);
+  const [exchangesUpdated, setExchangesUpdated] = useState<boolean>(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const db = getFirestore();
 
-  const createDid = async (): Promise<string | null> => {
+  const createDid = async (): Promise<BearerDid | null> => {
+    setLoading(true);
     try {
-      setLoading(true);
       const didDht = await DidDht.create({ publish: true });
-      const didString = didDht.uri;
-      setUserBearerDid(didString);
-      return didString;
+      setUserBearerDid(didDht);
+      return didDht;
     } catch (err) {
       setError("Error creating DID. Please try again.");
       return null;
@@ -81,7 +81,7 @@ export const DidProvider: React.FC<{ children: React.ReactNode }> = ({
         }
       } else {
         // DID doesn't exist, so create and store it
-        const newDid = await createDid();
+        const newDid: BearerDid | null = await createDid();
         setUserBearerDid(newDid);
         if (newDid) {
           await setDoc(userDocRef, {
@@ -131,13 +131,22 @@ export const DidProvider: React.FC<{ children: React.ReactNode }> = ({
   const handleSubmitRfq = useCallback(
     async (payinAmount: string, paymentDetails: object) => {
       try {
+        setLoading(true);
+        console.log("Submitting RFQ with data:", {
+          userBearerDid,
+          userVc,
+          selectedPfioffering,
+          payinAmount,
+          paymentDetails,
+        });
+
         // Ensure required state is available before submitting
         if (!userBearerDid || !userVc || !selectedPfioffering) {
           throw new Error("Missing required data for submission");
         }
 
         // Submit RFQ
-        await createExchange({
+        const exchange = await createExchange({
           pfiUri: pfiAllowlist[0].pfiUri,
           offeringId: selectedPfioffering.id,
           payin: {
@@ -146,21 +155,23 @@ export const DidProvider: React.FC<{ children: React.ReactNode }> = ({
             paymentDetails: {},
           },
           payout: {
-            kind: selectedPfioffering.data.payin.methods[0].kind,
+            kind: "USDC_WALLET_ADDRESS",
             paymentDetails: paymentDetails,
           },
           claims: selectedCredentials ?? [],
           didState: userBearerDid,
           offering: selectedPfioffering,
         });
+        console.log("RFQ submission successful:", exchange);
         setExchangesUpdated(true);
       } catch (error) {
         console.error("Error handling payment:", error);
+      } finally {
+        setLoading(false);
       }
     },
     [userBearerDid, userVc, selectedPfioffering, selectedCredentials],
   );
-
   // Render loading or error state
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -174,6 +185,8 @@ export const DidProvider: React.FC<{ children: React.ReactNode }> = ({
         loading,
         userVc,
         selectedPfioffering,
+        exchangesUpdated,
+        pfiofferings,
         error,
       }}
     >

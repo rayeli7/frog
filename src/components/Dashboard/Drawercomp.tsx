@@ -26,18 +26,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FieldValues, useForm } from "react-hook-form";
-
-type DrawerDialogProps = {
-  title: string;
-  color: string;
-  description: string;
-};
+import { useDidContext } from "../context/DidContext";
 
 function ProfileForm({ className }: React.ComponentProps<"form">) {
   const { register, handleSubmit } = useForm();
+  const { selectedPfioffering, handleSubmitRfq, exchangesUpdated } =
+    useDidContext();
 
   const handlePaymentClick = async (data: FieldValues) => {
     // TODO: Implement payment logic here
+    if (selectedPfioffering !== null) {
+      await handleSubmitRfq(data.amount, data.details);
+      if (exchangesUpdated) {
+        alert("Qoute Submitted");
+      } else {
+        alert("Qoute Not Submitted");
+      }
+    } else {
+      alert("pfi offering not selected, retry in 5 seconds");
+      //TODO retry fetchuserdata and handle submit
+    }
 
     // Example: fetch payment details, send to payment gateway, etc.
     // Uncomment the following line to simulate payment click
@@ -62,11 +70,11 @@ function ProfileForm({ className }: React.ComponentProps<"form">) {
         />
       </div>
       <div className="grid gap-2">
-        <Label htmlFor="vendor">Payment Details</Label>
+        <Label htmlFor="Payment details">Payment Details</Label>
         <Input
           {...register("details")}
           id="deatils"
-          defaultValue="Your MoMo Number"
+          defaultValue="0x3e4d9c2d7c7b6d3e3cb4cfe4f1b1f2b3ae9d0e6a"
         />
       </div>
       <Button type="submit" color="blue">
@@ -76,10 +84,11 @@ function ProfileForm({ className }: React.ComponentProps<"form">) {
   );
 }
 
-export function DrawerDialogTopUp(props: DrawerDialogProps) {
-  const { title, description } = props;
+export function DrawerDialogTopUp() {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const title = "Credit Account";
+  const description = "Topup your Account";
 
   if (isDesktop) {
     return (
@@ -88,7 +97,7 @@ export function DrawerDialogTopUp(props: DrawerDialogProps) {
           <Button
             type="button"
             variant="default"
-            className="w-full bg-lime-500 p-auto m-auto"
+            className=" bg-lime-500 p-auto m-auto"
           >
             {title}
           </Button>
@@ -107,14 +116,18 @@ export function DrawerDialogTopUp(props: DrawerDialogProps) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button type="button" variant="default" className="w-full bg-lime-500">
+        <Button
+          type="button"
+          variant="default"
+          className="p-auto m-auto bg-lime-500"
+        >
           {title}
         </Button>
       </DrawerTrigger>
       <DrawerContent className="bg-white">
         <DrawerHeader className="text-left">
           <DrawerTitle>{title}</DrawerTitle>
-          <DrawerDescription>{description}.</DrawerDescription>
+          <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
         <ProfileForm className="px-4" />
         <DrawerFooter className="pt-2">

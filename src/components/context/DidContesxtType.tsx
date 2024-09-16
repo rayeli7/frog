@@ -8,6 +8,8 @@ export type DidContextType = {
   selectedPfioffering: Offering | null;
   loading: boolean;
   error: string | null;
+  exchangesUpdated: boolean;
+  pfiofferings: Offering[] | null;
   fetchDataForUser: (user: firebase.User) => Promise<void>;
   handleSubmitRfq: (payinAmount: string, paymentDetails: object) => void;
 };

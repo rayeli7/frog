@@ -13,7 +13,8 @@ import TransactionRow from "./TransactionRow";
 import { DrawerDialogTopUp } from "./Drawercomp";
 import { GiReceiveMoney, GiPayMoney } from "react-icons/gi";
 import { GrCurrency } from "react-icons/gr";
-
+import { DrawerDialogDebit } from "./DrawercompDebit";
+import { useDidContext } from "../context/DidContext";
 interface Transaction {
   description: string;
   transactionId: string;
@@ -25,6 +26,7 @@ interface Transaction {
 const Dashboardcomponent: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [balance, setBalance] = useState<number>(0);
+  const { selectedPfioffering } = useDidContext();
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -63,69 +65,49 @@ const Dashboardcomponent: React.FC = () => {
   return (
     <main className="flex flex-col">
       <section className="self-center w-full max-w-[825px] max-md:max-w-full">
-        <div className="flex gap-5 max-md:flex-col">
-          <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col w-full rounded-none max-md:mt-8">
-              {/* Balance Card */}
-              <div className="flex gap-4 px-9 py-6 bg-white rounded-3xl shadow-lg max-md:px-5">
-                <GrCurrency size={50} />
-                <div className="flex flex-col my-auto">
-                  <div className="self-start text-base text-slate-400">
-                    Wallet Balance
-                  </div>
-                  <div className="mt-2 text-2xl font-semibold text-neutral-800">
-                    {balance}
-                  </div>
+        <div className="grid grid-cols-3 gap-5 max-md:grid-cols-1">
+          <div className="flex flex-col rounded-3xl p-6 bg-white shadow-lg">
+            {/* Balance Card */}
+            <div className="flex items-center gap-4">
+              <GrCurrency size={50} />
+              <div className="flex flex-col">
+                <div className="text-base text-slate-400">Wallet Balance</div>
+                <div className="mt-2 text-2xl font-semibold text-neutral-800">
+                  {balance}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Total Income Card */}
-          {/* This component displays the total income of the user */}
-          <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col w-full rounded-none max-md:mt-8">
-              <div className="flex gap-4 px-9 py-6 bg-white rounded-3xl shadow-lg max-md:px-5">
-                <GiReceiveMoney size={50} />
-                <div className="flex flex-col my-auto">
-                  <div className="self-start text-base text-slate-400">
-                    Total Income
-                  </div>
-                  <div className="mt-2 text-2xl font-semibold text-neutral-800">
-                    {/* Display the balance here */}
-                    Balance
-                  </div>
+          <div className="flex flex-col rounded-3xl p-6 bg-white shadow-lg">
+            <div className="flex items-center gap-4">
+              <GiReceiveMoney size={50} />
+              <div className="flex flex-col">
+                <div className="text-base text-slate-400">Total Income</div>
+                <div className="mt-2 text-2xl font-semibold text-neutral-800">
+                  {/* Display the balance here */}
+                  Balance
                 </div>
-                {/* Add a button to top up the wallet */}
-                <div className="ml-auto">
-                  <DrawerDialogTopUp
-                    title="Top Up Wallet"
-                    color="lime-500"
-                    description="Add funds to your wallet"
-                  />
-                </div>
+              </div>
+              <div className="ml-auto">
+                <DrawerDialogTopUp />
               </div>
             </div>
           </div>
 
           {/* Total Expense Card */}
-          <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col w-full rounded-none max-md:mt-8">
-              <div className="flex gap-4 px-9 py-6 bg-white rounded-3xl shadow-lg max-md:px-5">
-                <GiPayMoney size={50} />
-                <div className="flex flex-col my-auto">
-                  <div className="self-start text-base text-slate-400">
-                    Total Expenses
-                  </div>
-                  <div className="mt-2 text-2xl font-semibold text-neutral-800">
-                    Balance
-                  </div>
+          <div className="flex flex-col rounded-3xl p-6 bg-white shadow-lg">
+            <div className="flex items-center gap-4">
+              <GiPayMoney size={50} />
+              <div className="flex flex-col">
+                <div className="text-base text-slate-400">Total Expenses</div>
+                <div className="mt-2 text-2xl font-semibold text-neutral-800">
+                  Balance
                 </div>
-                <DrawerDialogTopUp
-                  title="Expenditure"
-                  color="Red"
-                  description="Add funds to your wallet"
-                />
+              </div>
+              <div className="ml-auto">
+                <DrawerDialogDebit />
               </div>
             </div>
           </div>
@@ -178,7 +160,6 @@ const Dashboardcomponent: React.FC = () => {
           </React.Fragment>
         ))}
       </section>
-      <Pagination />
     </main>
   );
 };
